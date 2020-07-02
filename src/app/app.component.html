@@ -1,0 +1,48 @@
+<div style="padding: 20px;">
+  <mat-form-field class="input">
+    <mat-label>Elements of Html</mat-label>
+    <input matInput [(ngModel)]="content" (keyup.enter)="onEnter()">
+  </mat-form-field>
+</div>
+
+<div>
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <!-- Page Name Column -->
+    <ng-container matColumnDef="pageName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Page </th>
+      <td mat-cell *matCellDef="let element">
+        <a [href]="element.pageLink" target="_blank">{{element.pageName}} </a>
+      </td>
+    </ng-container>
+
+    <!-- Like Column -->
+    <ng-container matColumnDef="postLink">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Link </th>
+      <td mat-cell *matCellDef="let element">
+        <a [href]="element.postLink" target="_blank">Link Post</a>
+      </td>
+    </ng-container>
+
+    <!-- Like Column -->
+    <ng-container matColumnDef="like">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Like </th>
+      <td mat-cell *matCellDef="let element"> {{element.like | number}} </td>
+    </ng-container>
+
+    <!-- Comment Column -->
+    <ng-container matColumnDef="comment">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Comment </th>
+      <td mat-cell *matCellDef="let element"> {{element.comment | number}} </td>
+    </ng-container>
+
+    <!-- Share Column -->
+    <ng-container matColumnDef="share">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Share </th>
+      <td mat-cell *matCellDef="let element"> {{element.share | number}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
